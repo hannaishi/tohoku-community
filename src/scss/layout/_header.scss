@@ -1,0 +1,106 @@
+@use "../global/breakpoints" as bp;
+
+.l-header {
+  position: fixed;
+  z-index: 50;
+  inset: 0 0 auto;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+.l-header.is-scrolled {
+  border-bottom-color: rgb(201 99 122 / 10%);
+  background: rgb(253 252 251 / 95%);
+  backdrop-filter: blur(12px);
+}
+.l-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+.l-header__logo {
+  flex-shrink: 0;
+  color: var(--color-sakura);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+.l-header__toggle {
+  padding: 0.5rem;
+  color: var(--color-sakura);
+}
+.l-header__close-icon {
+  display: none;
+}
+.l-header__toggle[aria-expanded="true"] .l-header__menu-icon {
+  display: none;
+}
+.l-header__toggle[aria-expanded="true"] .l-header__close-icon {
+  display: block;
+}
+.l-header__nav {
+  display: none;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+.l-header.is-menu-open {
+  background: rgb(253 252 251 / 98%);
+}
+.l-header.is-menu-open .l-header__nav {
+  display: flex;
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+}
+.l-header__link {
+  border-bottom: 1px solid var(--color-border);
+  padding-block: 0.5rem;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+.l-header__cta {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+}
+@media (min-width: bp.$desktop) {
+  .l-header__inner {
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+  .l-header__toggle {
+    display: none;
+  }
+  .l-header__nav {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .l-header__link {
+    border: 0;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+  .l-header__cta {
+    margin-top: 0;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+@media (hover: hover) {
+  .l-header__link:hover {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .l-header,
+  .l-header__link {
+    transition: none;
+  }
+}
