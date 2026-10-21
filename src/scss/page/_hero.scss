@@ -1,0 +1,108 @@
+@use "../global/breakpoints" as bp;
+
+.p-hero {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  align-items: flex-end;
+  background: var(--color-background);
+}
+.p-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.p-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.p-hero__media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(253 252 251 / 15%) 0%, transparent 20%), linear-gradient(to top, rgb(45 35 32 / 82%) 0%, rgb(45 35 32 / 30%) 55%, rgb(45 35 32 / 5%) 100%);
+  content: "";
+}
+.p-hero__content {
+  position: relative;
+  z-index: 1;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+}
+.p-hero__label {
+  margin-bottom: 1.5rem;
+  color: var(--color-sakura-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+}
+.p-hero__title {
+  max-width: 680px;
+  margin-bottom: 1.5rem;
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.p-hero__phrase {
+  display: inline-block;
+}
+.p-hero__description {
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  color: rgb(255 255 255 / 82%);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+}
+.p-hero__desktop-break {
+  display: none;
+}
+.p-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.p-hero__scroll {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  right: 2rem;
+  bottom: 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.p-hero__scroll-label {
+  color: rgb(255 255 255 / 50%);
+  font-family: var(--font-latin);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+}
+.p-hero__scroll-line {
+  width: 1px;
+  height: 4rem;
+  background: rgb(255 255 255 / 30%);
+}
+@media (min-width: bp.$tablet) {
+  .p-hero__content {
+    padding-bottom: 7rem;
+  }
+  .p-hero__title {
+    font-size: 3.75rem;
+  }
+  .p-hero__desktop-break {
+    display: block;
+  }
+  .p-hero__scroll {
+    display: flex;
+  }
+}
+@media (min-width: bp.$desktop) {
+  .p-hero__title {
+    font-size: 4.5rem;
+  }
+}
